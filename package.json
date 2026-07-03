@@ -8,5 +8,8 @@
     "start": "node src/server.js",
     "test": "node --test"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.21.0"
+  }
 }
