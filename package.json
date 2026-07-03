@@ -1,0 +1,12 @@
+{
+  "name": "collab-whiteboard",
+  "version": "1.0.0",
+  "description": "Real-time collaborative whiteboard using CRDTs",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
