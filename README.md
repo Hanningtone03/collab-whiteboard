@@ -2,11 +2,11 @@
 
 # collab-whiteboard
 
-A real-time collaborative whiteboard built from scratch in Node.js — CRDT-based conflict resolution over WebSockets, so multiple users can draw simultaneously without locking or waiting on each other.
+A real-time collaborative whiteboard built in Node.js; CRDT-based conflict resolution over WebSockets, so multiple users can draw simultaneously without locking or waiting on each other.
 
 ## How it works
 
-Every stroke is tracked as an add or delete operation stamped with a Lamport clock, giving each operation a logical timestamp plus the originating client's ID as a tiebreaker. When two replicas apply the same set of operations in different orders — which happens constantly with concurrent users on unreliable networks — they still converge to an identical final state, since conflicting writes to the same stroke resolve deterministically by comparing Lamport timestamps rather than by arrival order.
+Every stroke is tracked as an add or delete operation stamped with a Lamport clock, giving each operation a logical timestamp plus the originating client's ID as a tiebreaker. When two replicas apply the same set of operations in different orders; which happens constantly with concurrent users on unreliable networks; they still converge to an identical final state, since conflicting writes to the same stroke resolve deterministically by comparing Lamport timestamps rather than by arrival order.
 
 The server holds one CRDT instance per room, broadcasting every accepted operation to all other connected clients and periodically persisting a snapshot to disk so a room survives a server restart. The frontend runs its own CRDT instance locally, applying operations optimistically the instant they're drawn and merging in remote operations as they arrive over the WebSocket connection.
 
@@ -56,8 +56,8 @@ Then open http://localhost:5500 in two browser tabs to see live sync in action.
 ## Tech
 
 - Node.js, native WebSockets (`ws`)
-- No frontend framework — vanilla JS and HTML5 canvas
-- No database — CRDT snapshots persisted as JSON on disk
+- No frontend framework;  vanilla JS and HTML5 canvas
+- No database; CRDT snapshots persisted as JSON on disk
 
 ## License
 
