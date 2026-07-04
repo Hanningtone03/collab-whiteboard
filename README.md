@@ -51,7 +51,7 @@ Then open http://localhost:5500 in two browser tabs to see live sync in action.
 
 ## Live demo
 
-[link once deployed]
+https://hanningtone03.github.io/collab-whiteboard/
 
 ## Tech
 

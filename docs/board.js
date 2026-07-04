@@ -130,7 +130,7 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 
 const wsProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-const WS_URL = `${wsProtocol}://${window.location.hostname}:8090?room=${roomId}`;
+const WS_URL = `wss://collab-whiteboard-thoo.onrender.com?room=${roomId}`;
 
 let ws = null;
 let clientId = null;
