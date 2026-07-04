@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Whiteboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <h1>Whiteboard</h1>
+
+    <div class="tool-group" id="toolGroup">
+      <button class="tool-btn active" data-tool="pen" title="Pen">✎</button>
+      <button class="tool-btn" data-tool="line" title="Line">╱</button>
+      <button class="tool-btn" data-tool="rect" title="Rectangle">▭</button>
+      <button class="tool-btn" data-tool="circle" title="Circle">◯</button>
+      <button class="tool-btn" data-tool="text" title="Text">T</button>
+    </div>
+
+    <div class="palette" id="palette"></div>
+
+    <input type="color" id="colorPicker" value="#d99a3a" title="Custom color">
+    <input type="range" id="widthPicker" min="1" max="20" value="3" title="Brush size">
+
+    <button id="undoBtn">Undo</button>
+    <button id="redoBtn">Redo</button>
+    <button id="clearBtn">Clear</button>
+    <button id="exportBtn">Export PNG</button>
+
+    <button id="shareBtn">Share Room</button>
+
+    <button id="settingsBtn" title="Settings">⚙</button>
+    <button id="themeToggleBtn" title="Toggle light/dark mode">🌙</button>
+
+    <div id="presenceList" class="presence-list"></div>
+  </div>
+
+  <div id="namePrompt" class="modal hidden">
+    <div class="modal-content">
+      <p>Enter your display name</p>
+      <input type="text" id="nameInput" maxlength="20" placeholder="e.g. Hanni">
+      <button id="nameSubmitBtn">Join board</button>
+    </div>
+  </div>
+
+  <div id="shareModal" class="modal hidden">
+    <div class="modal-content">
+      <p>Share this link to invite others to this room</p>
+      <input type="text" id="shareLinkInput" readonly>
+      <button id="copyLinkBtn">Copy link</button>
+      <button id="closeShareBtn">Close</button>
+    </div>
+  </div>
+
+  <div id="settingsPanel" class="settings-panel hidden">
+    <h2>Brush shape</h2>
+    <div class="settings-row">
+      <label><input type="radio" name="brushShape" value="round" checked> Round</label>
+      <label><input type="radio" name="brushShape" value="square"> Square</label>
+    </div>
+    <h2>Canvas background</h2>
+    <div class="settings-row">
+      <label><input type="radio" name="canvasBg" value="dark" checked> Dark</label>
+      <label><input type="radio" name="canvasBg" value="light"> Light</label>
+      <label><input type="radio" name="canvasBg" value="grid"> Grid</label>
+    </div>
+  </div>
+
+  <canvas id="board"></canvas>
+  <div id="cursorLayer"></div>
+  <script src="whiteboardCRDT.js"></script>
+  <script src="board.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+:root {
+  --bg: #14120f;
+  --panel: #1c1a16;
+  --border: #2e2a22;
+  --amber: #d99a3a;
+  --text: #e8e2d4;
+  --text-dim: #a39c8a;
+  --canvas-bg: #1a1712;
+}
+
+body.light-mode {
+  --bg: #f4f0e6;
+  --panel: #ffffff;
+  --border: #d8d2c2;
+  --amber: #c17d1f;
+  --text: #201e19;
+  --text-dim: #6b6455;
+  --canvas-bg: #fdfcf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 16px;
+  margin: 0;
+  color: var(--amber);
+}
+
+.palette {
+  display: flex;
+  gap: 6px;
+}
+
+.palette-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.palette-swatch.active {
+  border-color: var(--text);
+}
+
+button {
+  background: var(--amber);
+  color: #14120f;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+input[type="color"] {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.presence-list {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.presence-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.settings-panel {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  z-index: 100;
+  width: 220px;
+}
+
+.settings-panel.hidden {
+  display: none;
+}
+
+.settings-panel h2 {
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 6px 0;
+}
+
+.settings-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+canvas {
+  display: block;
+  cursor: crosshair;
+  background: var(--canvas-bg);
+}
+
+canvas.bg-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+canvas.bg-light {
+  background: #fdfcf8;
+}
+
+#cursorLayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.remote-cursor {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 0.05s linear, top 0.05s linear;
+}
+
+.remote-cursor::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  font-size: 10px;
+  white-space: nowrap;
+  color: var(--text-dim);
+}
+
+.tool-group {
+  display: flex;
+  gap: 4px;
+  border-right: 1px solid var(--border);
+  padding-right: 12px;
+  margin-right: 4px;
+}
+
+.tool-btn {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  padding: 0;
+}
+
+.tool-btn.active {
+  background: var(--amber);
+  color: #14120f;
+  border-color: var(--amber);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  min-width: 280px;
+}
+
+.modal-content input[type="text"] {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 4px;
+  font-family: inherit;
+}

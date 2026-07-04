@@ -17,7 +17,7 @@ export class RoomManager {
 
   addClient(roomId, clientId, ws) {
     const room = this.getOrCreateRoom(roomId);
-    room.clients.set(clientId, { ws, cursor: null, color: null });
+    room.clients.set(clientId, { ws, cursor: null, color: null, name: null });
     return room;
   }
 
@@ -47,6 +47,6 @@ export class RoomManager {
     if (!room) return [];
     return Array.from(room.clients.entries())
       .filter(([, c]) => c.cursor !== null)
-      .map(([clientId, c]) => ({ clientId, cursor: c.cursor, color: c.color }));
+      .map(([clientId, c]) => ({ clientId, cursor: c.cursor, color: c.color, name: c.name }));
   }
 }

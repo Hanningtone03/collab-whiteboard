@@ -2,7 +2,9 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
-const DATA_DIR = path.resolve('data');
+const DATA_DIR = process.env.WHITEBOARD_DATA_DIR
+  ? path.resolve(process.env.WHITEBOARD_DATA_DIR)
+  : path.resolve('data');
 
 export async function ensureDataDir() {
   if (!existsSync(DATA_DIR)) {
